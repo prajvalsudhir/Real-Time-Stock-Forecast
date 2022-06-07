@@ -6,6 +6,8 @@ import requests
 
 # Flask constructor takes the name of
 # current module (__name__) as argument.
+import lstm_predict
+
 app = Flask(__name__)
 
 
@@ -26,6 +28,15 @@ def stock_details(tickr):
     it_df.index = it_df.index.astype('str')
     json_data = it_df.to_json()
     return json_data
+
+
+@app.route('/stockforecast/<tickr>',methods=['GET'])
+def stock_forecast(tickr):
+    forecast_dates, forecast_prices = lstm_predict.forecast_stock(tickr)
+    forecast_dict = {date:price for date,price in zip(forecast_dates,forecast_prices)}
+
+    return forecast_dict
+
 
 
 # main driver function
