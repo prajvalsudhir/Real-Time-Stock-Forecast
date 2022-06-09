@@ -84,15 +84,15 @@ def forecast_stock(tickr):
     forecast_dates = np.concatenate([day_inp, day_pred])
     forecast_prices = np.concatenate([inverse_inp, inverse_pred])
 
-    # return day_inp, inverse_inp, day_pred, inverse_pred
-    return forecast_dates,forecast_prices
+    return day_inp, inverse_inp, day_pred, inverse_pred
+    # return forecast_dates,forecast_prices
 
 
 
-forecast_dates,forecast_prices = forecast_stock('TCS.NS')
-# print(forecast_dates)
-# print(forecast_prices)
-forecast_dict = {date:price for date,price in zip(forecast_dates,forecast_prices)}
-print(forecast_dict)
+# forecast_dates,forecast_prices = forecast_stock('TCS.NS')
+# # print(forecast_dates)
+# # print(forecast_prices)
+# forecast_dict = {date:price for date,price in zip(forecast_dates,forecast_prices)}
+# print(forecast_dict)
 
 
